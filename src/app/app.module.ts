@@ -11,7 +11,7 @@ import { MessagesComponent } from './messages/messages.component';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComp
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
