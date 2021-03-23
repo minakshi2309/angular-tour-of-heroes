@@ -11,7 +11,6 @@ export class HeroDetailComponent {
 
   constructor() {}
 
-  ngOnInit() {
-    
+  ngOnInit() { 
   }
 }
