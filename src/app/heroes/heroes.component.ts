@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-//import { HEROES } from '../mock-heroes';
-import { HeroService } from '../hero.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroService } from './hero.service';
 
-@Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [
+    HeroService
+  ],
+  bootstrap: [AppComponent]
 })
-export class HeroesComponent implements OnInit {
+export class AppModule { }
 
-  //heroes = HEROES;
-  heroes: Hero[] = [];
-  selectedHero?: Hero;
 
-  constructor(private heroService: HeroService) {}
-  getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
-  }
-
-  ngOnInit() {
-    this.getHeroes();
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
-}
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/
