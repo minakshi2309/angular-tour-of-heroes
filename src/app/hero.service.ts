@@ -15,6 +15,9 @@ export class HeroService {
     return HEROES;
   }*/
   private heroesUrl = "api/heroes"; // URL to web api in the form base/collectionName
+  httpOptions = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" })
+  };
   constructor(
     private http: HttpClient,
     private messageService: MessageService
@@ -46,6 +49,13 @@ export class HeroService {
   }
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
+  }
+  /** PUT: update the hero on the server */
+  updateHero(hero: Hero): Observable<any> {
+    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>("updateHero"))
+    );
   }
   /**
    * Handle Http operation that failed.
